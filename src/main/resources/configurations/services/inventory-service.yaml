@@ -1,0 +1,17 @@
+spring:
+  mvc:
+    problemdetails:
+      enabled: true
+  
+  mongodb:
+    host: localhost
+    port: 13500
+    username: root
+    password: mongodb
+    database: d_pay_inventory_db
+    authentication-database: admin
+
+
+server:
+  port: 8001
+

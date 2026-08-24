@@ -1,0 +1,36 @@
+spring:
+  mvc:
+    problemdetails:
+      enabled: true
+
+  datasource:
+    url: jdbc:mysql://localhost:14500/d_pay_orders?createDatabaseIfNotExist=true
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+server:
+  port: 8002
+  forward-headers-strategy: framework
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+
+# ── Inventory Service URL ────────────────────────────────────────────────────
+# Routes through the API Gateway (port 7000) so the Order Service never
+# hard-codes the Inventory Service port directly.
+inventory:
+  service:
+    url: http://localhost:7000
