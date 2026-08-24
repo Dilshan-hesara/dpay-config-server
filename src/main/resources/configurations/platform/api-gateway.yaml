@@ -1,0 +1,39 @@
+spring:
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/api/v1/users/**
+
+            - id: inventory-service
+              uri: lb://INVENTORY-SERVICE
+              predicates:
+                - Path=/api/v1/inventory/**
+
+            - id: order-service
+              uri: lb://ORDER-SERVICE
+              predicates:
+                - Path=/api/v1/orders/**
+
+          default-filters:
+            - PreserveHostHeader
+
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowed-methods: "*"
+                allowed-headers: "*"
+server:
+  port: 7000
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
