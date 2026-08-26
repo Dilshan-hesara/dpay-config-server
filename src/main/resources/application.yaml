@@ -1,19 +1,12 @@
 spring:
   application:
     name: Config-Server
-  profiles:
-    active: native
   cloud:
     config:
       server:
         git:
           uri: https://github.com/Dilshan-hesara/d-pay-project-platform-configurations.git
           search-paths: platform,services
-        native:
-          search-locations:
-            - classpath:/configurations
-            - classpath:/configurations/platform
-            - classpath:/configurations/services
 
 server:
   port: 9000
@@ -21,3 +14,4 @@ server:
 eureka:
   instance:
     prefer-ip-address: true
+    hostname: localhost
